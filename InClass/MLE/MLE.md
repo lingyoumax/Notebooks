@@ -8,3 +8,5 @@
     - choose an "universal function family" $\mathcal{F}$
     - $\mathcal{F}$ has paramaters $\theta$ that fit data $\implies$ $\hat{Y}=f_{\hat{\theta}}(X)$, s.t $\hat{Y}_i\approx Y^*_i$
 - example: $\mathcal{F}={ax^2+bx+c},\hat{\theta}=[a,b,c]$
+
+![替代文本](1-1.jpg "可选的标题")
