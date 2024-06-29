@@ -10,3 +10,8 @@
 - example: $\mathcal{F}={ax^2+bx+c},\hat{\theta}=[a,b,c]$
 
 ![1-1.jpg](1-1.jpg "The functions with different parameters")
+## Basic ML workflow
+- ① collect data: two datasets:
+    - training dataset (TS) to find $\hat{\theta}$
+    - test dataset to validate quality
+- ② select function
