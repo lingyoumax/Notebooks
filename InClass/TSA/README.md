@@ -18,6 +18,9 @@
     - [Definition (Measurable map)](#definition-measurable-map)
     - [Example (Measurable maps)](#example-measurable-maps)
     - [Remark](#remark-5)
+    - [Theorem (Push-forward)](#theorem-push-forward)
+    - [Definition (Random variable)](#definition-random-variable)
+    - [Remark](#remark-6)
 
 # Statistical inference I: Foundations of statistical models
 ## Measure Theory
@@ -34,11 +37,11 @@ In the following, we will usually refer to $\Omega$ as the set of all elementary
 
 ### Definition ($\sigma$-Algebra)
 
-A set $A \subseteq \mathcal{P}(\Omega)$ is called a $\sigma$-algebra on $\Omega$ if:
+A set $\mathcal{A} \subseteq \mathcal{P}(\Omega)$ is called a $\sigma$-algebra on $\Omega$ if:
 
-- $\Omega \in A$,
-- $A \in A \Rightarrow A^c \in A$,
-- $A_1, A_2, \ldots \in A \Rightarrow \bigcup_{n=1}^{\infty} A_n \in A$.
+- $\Omega \in \mathcal{A}$,
+- $A \in \mathcal{A} \Rightarrow A^c \in \mathcal{A}$,
+- $A_1, A_2, \ldots \in \mathcal{A} \Rightarrow \bigcup_{n=1}^{\infty} A_n \in \mathcal{A}$.
 
 Elements of $A$ are called measurable sets. The tuple $(\Omega, A)$ is called a measurable space.
 
@@ -54,7 +57,7 @@ The properties of a $\sigma$-algebra have the following interpretations in the c
 
 ### Example (Trivial $\sigma$-algebras)
 
-The set $A_1 = \{\emptyset, \Omega\}$ and the power set $A_2 = \mathcal{P}(\Omega)$ are $\sigma$-algebras.
+The set $\mathcal{A}_1 = \{\emptyset, \Omega\}$ and the power set $\mathcal{A}_2 = \mathcal{P}(\Omega)$ are $\sigma$-algebras.
 
 ### Example (Dice)
 
@@ -64,11 +67,12 @@ $$ \Omega = \{1, 2, 3, 4, 5, 6\}.$$
 
 If the number rolled is observable the $\sigma$-algebra has the following form
 
-$$A_1 = \{\emptyset, \{1\}, \ldots, \{6\}, \{1, 2, 3\}, \{5, 6\}, \{1, 2, 3, \ldots\}, \Omega\} = \mathcal{P}(\Omega).$$
+$$\mathcal{A}_1 = \{\emptyset, \{1\}, \ldots, \{6\}, \{1, 2, 3\}, \{5, 6\}, \{1, 2, 3, \ldots\}, \Omega\} = \mathcal{P}(\Omega).$$
 
 If only the parity of the rolled number is observable, i.e., odd or even, the $\sigma$-algebra has the following form
 
-$$A_2 = \{\emptyset, \{1, 3, 5\}, \{2, 4, 6\}, \Omega\}.$$
+$$\mathcal{A}_2 = \left\{ \emptyset, \underbrace{\{1, 3, 5\}}_{\text{odd}}, \underbrace{\{2, 4, 6\}}_{\text{even}}, \Omega \right\}
+.$$
 
 The ability to measure occurring events (or sets of elementary events) contained in the $\sigma$-algebra has been ensured. The next step is to assign them a value (e.g., a probability). To be in accordance with the natural understanding of the behavior of probabilities, the mapping from the $\sigma$-algebra to the reals should satisfy certain properties, which are collected in the following definition of a measure.
 
@@ -105,7 +109,7 @@ This can be fixed by subtracting the measure of the intersection of the sets.
 
 ### Definition (Probability space)
 
-Let $\Omega$ be a set of elementary events, $A$ be a $\sigma$-algebra on $\Omega$ and $\mathbb{P}$ a probability measure on $A$. The tuple $(\Omega, A, \mathbb{P})$ is called probability space. Every $A \in A$ is called event. For $A \in A$, $\mathbb{P}(A)$ is called as the probability of $A$.
+Let $\Omega$ be a set of elementary events, $\mathcal{A}$ be a $\sigma$-algebra on $\Omega$ and $\mathbb{P}$ a probability measure on $\mathcal{A}$. The tuple $(\Omega, \mathcal{A}, \mathbb{P})$ is called probability space. Every $A \in \mathcal{A}$ is called event. For $A \in \mathcal{A}$, $\mathbb{P}(A)$ is called as the probability of $A$.
 
 ## Probability theory and random variables
 
@@ -148,9 +152,9 @@ To make the transition to the real numbers consistent on a theoretical level, th
 
 ### Definition (Measurable map)
 
-Let $(\Omega, A)$, $(\Omega', A')$ be two measurable spaces. A map $f: \Omega \rightarrow \Omega'$ is called $(A, A')$-measurable if all preimages of the measurable sets are measurable, i.e.,
+Let $(\Omega, \mathcal{A})$, $(\Omega', \mathcal{A}')$ be two measurable spaces. A map $f: \Omega \rightarrow \Omega'$ is called $(\mathcal{A}, \mathcal{A}')$-measurable if all preimages of the measurable sets are measurable, i.e.,
 
-$$A' \in A' \implies f^{-1}(A') \in A$$
+$$A' \in \mathcal{A}' \implies f^{-1}(A') \in \mathcal{A}$$
 
 ### Example (Measurable maps)
 
@@ -162,3 +166,21 @@ The following two examples are measurable:
 ### Remark
 
 If the respective $\sigma$-algebras match, the sum, product, and composition of two measurable functions is again a measurable function. So are supremum, infimum, lim sup, and lim inf of a sequence of measurable functions. Hence, the same will hold for random variables.
+
+### Theorem (Push-forward)
+
+Let $(\Omega, \mathcal{A})$, $(\Omega', \mathcal{A}')$ be two measurable spaces, $f : \Omega \to \Omega'$ be measurable and $\mu$ a measure on $\mathcal{A}$. Then, it holds that:
+
+$$
+\mu_f(B) := \mu(f^{-1}(B)), \quad B \in \mathcal{A}'
+$$
+
+is a measure on $\mathcal{A}'$. $This measure is called *push-forward* of $f$.
+
+### Definition (Random variable)
+
+Let $(\Omega, A)$ be a measurable space. A map $X : \Omega \to \mathbb{R}$ is called a random variable if it is $(A, \mathcal{B}(\mathbb{R}))$-measurable. For a fixed $\omega \in \Omega$, the value $X(\omega)$ is called sample of $X$.
+
+### Remark
+
+A random variable may take on as many values as there are events. In theory, the random variable can map to any measurable space, e.g., $\mathbb{R}^n$ or even more abstract spaces, equipped with a suitable $\sigma$-algebra and measure on each space. Given that we defined random variables on $\mathbb{R}$, the next section will focus on probability measures defined on $\mathbb{R}$. For such measures, one can define concrete concepts and properties, such as cumulative distribution functions, expected values, and higher moments.
