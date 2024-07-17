@@ -17,4 +17,5 @@ Formal defination: Expected amount of information of a probability distribution.
 $$H(p)=\sum p_iI_i=-\sum p_ilog_2(p_i)$$
 
 e.g. an uneven coin with $p(0)=0.2, p(1)=0.8$,
+
 $$H(p)=-0.2\times log_20.2-0.8log_20.8=0.72$$
